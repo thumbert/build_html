@@ -42,15 +42,21 @@ class TableCell extends HtmlChild with HtmlContainer, Html {
     return this;
   }
 
-  TableCell withParagraph(String content) {
-    this.content.addChild(
-      HtmlElement(HtmlTag.paragraphText)..withChild(Raw(content)),
-    );
+  @override
+  TableCell withParagraph(
+    String text, {
+    List<(String, String)> attributes = const [],
+  }) {
+    content.addChild(HtmlElement(HtmlTag.paragraphText)..withChild(Raw(text)));
+    for (var (key, value) in attributes) {
+      content.addAttribute(key, value);
+    }
     return this;
   }
 
-  TableCell withRaw(String data) {
-    content.addChild(Raw(data));
+  @override
+  TableCell withRaw(String text) {
+    content.addChild(Raw(text));
     return this;
   }
 

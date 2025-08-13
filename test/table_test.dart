@@ -24,7 +24,7 @@ void tests() {
       var table = Table()..withBodyRow(['a', 'b']);
       expect(
         table.toHtml(),
-        '<table><thead><tr><th>a</th><th>b</th></tr></thead><tbody/></table>',
+        '<table><thead/><tbody><tr><td>a</td><td>b</td></tr></tbody></table>',
       );
     });
   });

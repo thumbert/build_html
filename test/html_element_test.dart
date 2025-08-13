@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:build_html/src/html_child.dart';
 import 'package:build_html/src/html_element.dart';
 import 'package:build_html/src/html_tag.dart';
@@ -6,9 +8,20 @@ import 'package:test/test.dart';
 void tests() {
   group('HtmlElement tests', () {
     test('simple element', () {
-      var html = HtmlElement(HtmlTag.div)
-        ..withParagraph('My p element');
+      var html = HtmlElement(HtmlTag.div)..withParagraph('My p element');
       expect(html.toHtml(), '<div><p>My p element</p></div>');
+    });
+
+    test('with escape input', () {
+      const escape = HtmlEscape();
+      var html = HtmlElement(HtmlTag.div)
+        ..withParagraph(
+          escape.convert('This is a <div> element with & special characters.'),
+        );
+      expect(
+        html.toHtml(),
+        '<div><p>This is a &lt;div&gt; element with &amp; special characters.</p></div>',
+      );
     });
 
     test('constructor with nested elements', () {

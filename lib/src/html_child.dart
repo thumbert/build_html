@@ -18,19 +18,9 @@ class HtmlChild extends Object with Html {
 class Element extends HtmlChild {
   Element(this.element);
   final HtmlElement element;
-
-  @override
-  void addHtml<T extends Html>(T html) {
-    // TODO: implement addHtml
-  }
 }
 
 class Raw extends HtmlChild {
   Raw(this.content);
   final String content;
-
-  @override
-  void addHtml<T extends Html>(T html) {
-    // TODO: implement addHtml
-  }
 }

@@ -19,7 +19,7 @@ void tests() {
       var row = TableRow()
         ..withAttributes([('id', 'first-row'), ('class', 'table-rows')])
         ..withCell(
-          TableCell(TableCellType.data).withParagraph('Hello, World!'),
+          TableCell(TableCellType.data)..withParagraph('Hello, World!'),
         );
       expect(
         row.toHtml(),

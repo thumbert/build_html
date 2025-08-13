@@ -1,7 +1,7 @@
 name: build_html
 description: Construct HTML documents in Dart.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+version: 0.1.0
+repository: https://github.com/thumbert/build_html
 
 environment:
   sdk: ^3.8.3

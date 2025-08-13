@@ -13,29 +13,88 @@ class HtmlElement extends HtmlChild with HtmlContainer, Html {
     attributes.add((key, value));
   }
 
-  HtmlElement withAttribute(String key, String value) {
-    attributes.add((key, value));
-    return this;
-  }
+  // void addLink(String href, String text) {
+  //   addChild(
+  //     HtmlElement(HtmlTag.link)
+  //       ..withAttribute('href', href)
+  //       ..withChild(Raw(text)),
+  //   );
+  // }
+
+  // /// Adds a link with additional attributes.
+  // void addLinkWithAttributes(
+  //   String href,
+  //   String text,
+  //   List<(String, String)> attributes,
+  // ) {
+  //   var element = HtmlElement(HtmlTag.link)
+  //     ..withAttribute('href', href)
+  //     ..withChild(Raw(text));
+  //   for (var (key, value) in attributes) {
+  //     element.addAttribute(key, value);
+  //   }
+  //   addHtml(element);
+  // }
 
   void addChild(HtmlChild content) {
     children.add(content);
   }
+
+  // void addParagraph(String content) {
+  //   addChild(HtmlElement(HtmlTag.paragraphText)..withChild(Raw(content)));
+  // }
+
+  // void addParagraphWithAttributes(
+  //   String content,
+  //   List<(String, String)> attributes,
+  // ) {
+  //   var element = HtmlElement(HtmlTag.paragraphText)..withChild(Raw(content));
+  //   for (var (key, value) in attributes) {
+  //     element.addAttribute(key, value);
+  //   }
+  //   addHtml(element);
+  // }
 
   HtmlElement withChild(HtmlChild content) {
     addChild(content);
     return this;
   }
 
-  HtmlElement withParagraph(String content) {
-    return withChild(
-      HtmlElement(HtmlTag.paragraphText)..withChild(Raw(content)),
-    );
+  HtmlElement withAttribute(String key, String value) {
+    attributes.add((key, value));
+    return this;
   }
+
+  // HtmlElement withParagraph(String content) {
+  //   addParagraph(content);
+  //   return this;
+  // }
+
+  // HtmlElement withLink(String href, String text) {
+  //   addLink(href, text);
+  //   return this;
+  // }
+
+  // HtmlElement withLinkWithAttributes(
+  //   String href,
+  //   String text,
+  //   List<(String, String)> attributes,
+  // ) {
+  //   addLinkWithAttributes(href, text, attributes);
+  //   return this;
+  // }
+
+  // HtmlElement withParagraphWithAttributes(
+  //   String content,
+  //   List<(String, String)> attributes,
+  // ) {
+  //   addParagraphWithAttributes(content, attributes);
+  //   return this;
+  // }
 
   @override
   void addHtml<T extends Html>(T html) {
-    // TODO: implement addHtml
+    children.add(Raw(html.toHtml()));
   }
 
   @override
