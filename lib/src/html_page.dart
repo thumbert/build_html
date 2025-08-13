@@ -85,7 +85,7 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
 
   @override
   void addHtml<T extends Html>(T html) {
-    // TODO: implement addHtml
+    body += html.toHtml();
   }
 
   void addMeta(List<(String, String)> attributes) {
@@ -127,6 +127,6 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
 
   @override
   String toHtml() {
-    return "${version.docType()}<html ${version.htmlAttrs()}><head>$head</head><body>$body</body></html>";
+    return "${version.docType()}<html${version.htmlAttrs()}><head>$head</head><body>$body</body></html>";
   }
 }
