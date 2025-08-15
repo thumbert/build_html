@@ -65,6 +65,6 @@ class TableCell extends HtmlChild with HtmlContainer, Html {
 
   @override
   void addHtml<T extends Html>(T html) {
-    // TODO: implement addHtml
+    content.addChild(Raw(html.toHtml()));
   }
 }

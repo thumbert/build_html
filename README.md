@@ -1,4 +1,4 @@
-This package is a port of the Rust crate [build_html](https://docs.rs/build_html/latest/build_html/index.html). 
+This Dart package is a port of the Rust crate [build_html](https://docs.rs/build_html/latest/build_html/index.html). 
 
 ## Example
 

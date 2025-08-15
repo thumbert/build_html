@@ -5,7 +5,7 @@ import 'package:build_html/src/html_tag.dart';
 import 'package:build_html/src/table_cell.dart';
 import 'package:build_html/src/table_row.dart';
 
-class Table extends HtmlChild with HtmlContainer, Html {
+class Table extends HtmlChild with Html {
   /// Create an empty table.
   Table() {
     table = HtmlElement(HtmlTag.table);
@@ -167,10 +167,5 @@ class Table extends HtmlChild with HtmlContainer, Html {
       tbl.addChild(caption!);
     }
     return tbl.toHtml();
-  }
-  
-  @override
-  void addHtml<T extends Html>(T html) {
-    // TODO: implement addHtml
-  }
+  }  
 }

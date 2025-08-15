@@ -1,3 +1,12 @@
+
+# TODO
+- 
+
+## 0.1.1 (2025-08-15)
+- Add example of table with styling (some borders, a summary row, etc.)
+- Add addStylesheet() to HtmlPage.
+- Table does not need to inherit HtmlContainer.  Removed that. 
+
 ## 0.1.0 (2025-08-12)
 - Tentatively passing some tests.  Will try some real examples soon.
 

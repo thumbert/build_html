@@ -62,11 +62,7 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
   late String head;
   late String body;
 
-  void addHeadLink(String href, String rel) {
-    head += '<link href="$href" rel="$rel"/>';
-  }
-
-  void addHeadLinkWithAttributes(
+  void addHeadLink(
     String href,
     String rel,
     List<(String, String)> attributes,
@@ -101,17 +97,21 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
     body += '<script $type src="$src"></script>';
   }
 
-  HtmlPage withHeadLink(String href, String rel) {
-    addHeadLink(href, rel);
-    return this;
+  void addStyle(String css, {List<(String, String)> attributes = const []}) {
+    var style = '<style';
+    for (var (key, value) in attributes) {
+      style += ' $key="$value"';
+    }
+    style += '>$css</style>';
+    head += style;
   }
 
-  HtmlPage withHeadLinkWithAttributes(
+  HtmlPage withHeadLink(
     String href,
-    String rel,
-    List<(String, String)> attributes,
-  ) {
-    addHeadLinkWithAttributes(href, rel, attributes);
+    String rel, {
+    List<(String, String)> attributes = const <(String, String)>[],
+  }) {
+    addHeadLink(href, rel, attributes);
     return this;
   }
 
@@ -122,6 +122,14 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
 
   HtmlPage withMeta(List<(String, String)> attributes) {
     addMeta(attributes);
+    return this;
+  }
+
+  HtmlPage withStyle(
+    String css, {
+    List<(String, String)> attributes = const <(String, String)>[],
+  }) {
+    addStyle(css, attributes: attributes);
     return this;
   }
 

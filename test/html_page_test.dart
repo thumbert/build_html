@@ -26,10 +26,10 @@ void tests() {
       );
     });
     test('with head link with attr', () {
-      var content = HtmlPage().withHeadLinkWithAttributes(
+      var content = HtmlPage().withHeadLink(
         'print.css',
         'stylesheet',
-        [('media', 'print')],
+        attributes: [('media', 'print')],
       );
       expect(
         content.toHtml(),

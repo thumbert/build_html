@@ -4,7 +4,7 @@ import 'package:build_html/src/html_tag.dart';
 import 'package:build_html/src/table_cell.dart';
 import 'package:build_html/src/html_child.dart';
 
-class TableRow extends HtmlChild with HtmlContainer, Html {
+class TableRow extends HtmlChild with Html {
   TableRow() {
     content = HtmlElement(HtmlTag.tableRow);
   }
@@ -22,12 +22,6 @@ class TableRow extends HtmlChild with HtmlContainer, Html {
     return this;
   }
 
-  @override
-  TableRow withRaw(String text) {
-    content.addChild(Raw(text));
-    return this;
-  }
-
   void addCell(TableCell cell) {
     content.addChild(cell);
   }
@@ -38,10 +32,5 @@ class TableRow extends HtmlChild with HtmlContainer, Html {
   }
 
   @override
-  String toHtml() => content.toHtml();  
-
-  @override
-  void addHtml<T extends Html>(T html) {
-    // TODO: implement addHtml
-  }
+  String toHtml() => content.toHtml();
 }
