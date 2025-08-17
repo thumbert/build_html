@@ -6,20 +6,8 @@ Table makeTable() {
   var table = Table()
     ..withCustomHeaderRow(
       TableRow()
-        ..withCell(
-          TableCell(TableCellType.header)
-            ..withRaw('Hour Beginning')
-            ..withAttributes([
-              ("style", "border-bottom:1px solid #0d69ae;"),
-            ]),
-        )
-        ..withCell(
-          TableCell(TableCellType.header)
-            ..withRaw('Price')
-            ..withAttributes([
-              ("style", "border-bottom:1px solid #0d69ae;"),
-            ]),
-        ),
+        ..withCell(TableCell(TableCellType.header)..withRaw('Hour Beginning'))
+        ..withCell(TableCell(TableCellType.header)..withRaw('Price')),
     );
   var prices = [
     ('2025-07-03 00:00:00-0400', '55.29'),
@@ -69,6 +57,9 @@ void main(List<String> args) {
     }
     thead tr {
         background: #eceff4;       
+    }
+    thead tr th {
+      border-bottom:1px solid #0d69ae;
     }
     th, td {
         padding: 6px;
