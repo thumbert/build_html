@@ -2,7 +2,7 @@ import 'package:build_html/src/table_cell.dart';
 import 'package:test/test.dart';
 
 void tests() {
-  group('table cell tests', () {
+  group('TableCell tests: ', () {
     test('empty cell', () {
       expect(TableCell(TableCellType.data).toHtml(), '<td/>');
       expect(TableCell(TableCellType.header).toHtml(), '<th/>');

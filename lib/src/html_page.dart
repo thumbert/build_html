@@ -1,23 +1,7 @@
+import 'package:build_html/src/attributes.dart';
+import 'package:build_html/src/header_content.dart';
 import 'package:build_html/src/html_container.dart';
 import 'package:build_html/src/html_child.dart';
-
-enum ScriptType {
-  async,
-  defer,
-  plain;
-
-  @override
-  String toString() {
-    switch (this) {
-      case ScriptType.async:
-        return 'async';
-      case ScriptType.defer:
-        return 'defer';
-      case ScriptType.plain:
-        return '';
-    }
-  }
-}
 
 enum HtmlVersion {
   html4,
@@ -64,17 +48,13 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
 
   void addHeadLink(
     String href,
-    String rel,
-    List<(String, String)> attributes,
-  ) {
-    var link = '<link href="$href" rel="$rel"';
-    for (var (key, value) in attributes) {
-      link += ' $key="$value"';
-    }
-    link += '/>';
-    head += link;
+    String rel, {
+    List<(String, String)> attributes = const [],
+  }) {
+    addHtmlHead(Link(href: href, rel: rel, attr: Attributes(attributes)));
   }
 
+  /// Add to the Html head element
   void addHtmlHead<T extends Html>(T html) {
     head += html.toHtml();
   }
@@ -85,25 +65,34 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
   }
 
   void addMeta(List<(String, String)> attributes) {
-    var meta = '<meta';
-    for (var (key, value) in attributes) {
-      meta += ' $key="$value"';
-    }
-    meta += '/>';
-    head += meta;
+    addHtmlHead(Meta(attr: Attributes(attributes)));
   }
 
-  void addScriptLink(String src, ScriptType type) {
-    body += '<script $type src="$src"></script>';
+  void addScriptLink(
+    String src,
+    ScriptType type, {
+    List<(String, String)> attributes = const [],
+  }) {
+    addHtmlHead(ScriptLink(src: src, attr: Attributes(attributes), type: type));
   }
 
+  void addScriptLiteral(String code) {
+    addHtmlHead(ScriptLiteral(code: code));
+  }
+
+  /// Add raw/literal style data to the head of this Html page.
   void addStyle(String css, {List<(String, String)> attributes = const []}) {
-    var style = '<style';
-    for (var (key, value) in attributes) {
-      style += ' $key="$value"';
-    }
-    style += '>$css</style>';
-    head += style;
+    addHtmlHead(Style(css: css, attr: Attributes(attributes)));
+  }
+
+  /// Add the specific stylesheet to the head of this Html page.
+  /// e.g. [cssFileName] = `assets/styles.css`
+  void addStylesheet(String cssFileName) {
+    addHeadLink(cssFileName, 'stylesheet');
+  }
+
+  void addTitle(String title) {
+    addHtmlHead(Title(content: title));
   }
 
   HtmlPage withHeadLink(
@@ -111,7 +100,7 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
     String rel, {
     List<(String, String)> attributes = const <(String, String)>[],
   }) {
-    addHeadLink(href, rel, attributes);
+    addHeadLink(href, rel, attributes: attributes);
     return this;
   }
 
@@ -125,11 +114,31 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
     return this;
   }
 
+  HtmlPage withScriptLink(String src, ScriptType type) {
+    addScriptLink(src, type);
+    return this;
+  }
+
+  HtmlPage withScriptLiteral(String code) {
+    addScriptLiteral(code);
+    return this;
+  }
+
   HtmlPage withStyle(
     String css, {
     List<(String, String)> attributes = const <(String, String)>[],
   }) {
     addStyle(css, attributes: attributes);
+    return this;
+  }
+
+  HtmlPage withStylesheet(String cssFileName) {
+    addStylesheet(cssFileName);
+    return this;
+  }
+
+  HtmlPage withTitle(String title) {
+    addTitle(title);
     return this;
   }
 

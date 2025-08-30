@@ -1,4 +1,6 @@
+export 'src/attributes.dart';
 export 'src/container.dart';
+export 'src/header_content.dart';
 export 'src/html_child.dart';
 export 'src/html_container.dart';
 export 'src/html_element.dart';

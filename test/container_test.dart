@@ -2,7 +2,7 @@ import 'package:build_html/src/container.dart';
 import 'package:test/test.dart';
 
 void tests() {
-  group('container tests', () {
+  group('Container tests: ', () {
     test('with attributes', () {
       var content = Container(containerType: ContainerType.main)
         ..withHeader(1, 'My Container')

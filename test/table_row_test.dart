@@ -3,7 +3,7 @@ import 'package:build_html/src/table_row.dart';
 import 'package:test/test.dart';
 
 void tests() {
-  group('table row tests', () {
+  group('TableRow tests: ', () {
     test('empty row', () {
       expect(TableRow().toHtml(), '<tr/>');
     });

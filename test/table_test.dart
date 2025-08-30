@@ -4,7 +4,7 @@ import 'package:build_html/src/table_row.dart';
 import 'package:test/test.dart';
 
 void tests() {
-  group('table tests', () {
+  group('Table tests: ', () {
     test('test attributes', () {
       var table = Table()
         ..withAttributes([('id', 'my-table')])
