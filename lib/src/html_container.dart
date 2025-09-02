@@ -21,8 +21,10 @@ mixin HtmlContainer {
     addHtml(container);
   }
 
-  void addHeader(int level, String text) {
-    _addHeaderAttr(level, text, []); 
+  void addHeader(int level, String text, {
+    List<(String, String)> attributes = const [],
+  }) {
+    _addHeaderAttr(level, text, attributes); 
   }
 
   void addHtml<T extends Html>(T html);
@@ -37,6 +39,7 @@ mixin HtmlContainer {
     addHtml(element);
   }
 
+  /// Adds an <a> tag to this container
   void addLink(
     String href,
     String text, {
@@ -73,8 +76,10 @@ mixin HtmlContainer {
     return this;
   }
 
-  HtmlContainer withHeader(int level, String text) {
-    addHeader(level, text);
+  HtmlContainer withHeader(int level, String text, {
+    List<(String, String)> attributes = const [],
+  }) {
+    addHeader(level, text, attributes: attributes);
     return this;
   }
 

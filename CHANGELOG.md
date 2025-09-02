@@ -2,6 +2,9 @@
 # TODO
 - 
 
+## 0.1.3 (2025-09-02)
+- Add some attributes default arguments to HtmlContainer addHeader()
+
 ## 0.1.2 (2025-08-30)
 - Add more methods to HtmlPage()
 
