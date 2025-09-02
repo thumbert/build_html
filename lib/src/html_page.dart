@@ -114,8 +114,12 @@ class HtmlPage extends HtmlChild with HtmlContainer, Html {
     return this;
   }
 
-  HtmlPage withScriptLink(String src, ScriptType type) {
-    addScriptLink(src, type);
+  HtmlPage withScriptLink(
+    String src,
+    ScriptType type, {
+    List<(String, String)> attributes = const [],
+  }) {
+    addScriptLink(src, type, attributes: attributes);
     return this;
   }
 
