@@ -12,6 +12,10 @@ void tests() {
         '<div><a href="https://dart.dev/">Dart Homepage</a></div>',
       );
     });
+    test('add an italic paragraph', () {
+      var content = HtmlElement(HtmlTag.italic)..withRaw('Dart Homepage');
+      expect(content.toHtml(), '<i>Dart Homepage</i>');
+    });
   });
 }
 

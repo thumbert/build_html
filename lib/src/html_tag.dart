@@ -2,6 +2,7 @@ enum HtmlTag {
   address,
   article,
   aside,
+  bold,
   blockquote,
   canvas,
   cite,
@@ -25,6 +26,7 @@ enum HtmlTag {
   iframe,
   image,
   inlineQuote,
+  italic,
   lineBreak,
   link,
   listElement,
@@ -59,6 +61,8 @@ enum HtmlTag {
         return 'aside';
       case HtmlTag.blockquote:
         return 'blockquote';
+      case HtmlTag.bold:
+        return 'b';
       case HtmlTag.canvas:
         return 'canvas';
       case HtmlTag.cite:
@@ -101,6 +105,8 @@ enum HtmlTag {
         return 'iframe';
       case HtmlTag.image:
         return 'img';
+      case HtmlTag.italic:
+        return 'i';
       case HtmlTag.inlineQuote:
         return 'q';
       case HtmlTag.lineBreak:
