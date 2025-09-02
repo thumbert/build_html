@@ -72,6 +72,11 @@ class Container extends HtmlChild with HtmlContainer, Html {
   late final HtmlElement content;
 
   @override
+  void addContainer(Container container) {
+    addHtml(container);
+  }
+
+  @override
   void addHtml<T extends Html>(T html) {
     switch (tag) {
       case HtmlTag.orderedList || HtmlTag.unorderedList:
@@ -85,6 +90,18 @@ class Container extends HtmlChild with HtmlContainer, Html {
     for (var (key, value) in attributes) {
       content.addAttribute(key, value);
     }
+    return this;
+  }
+
+  @override
+  Container withContainer(Container container) {
+    withHtml(container);
+    return this;
+  }
+
+  @override
+  Container withHtml<T extends Html>(T html) {
+    addHtml(html);
     return this;
   }
 
